@@ -61,7 +61,7 @@ class Search extends React.Component {
 
         {list.length === 0 ? <p>Nenhum álbum foi encontrado</p>
           : ((
-            <section>
+            <div>
               <h2>{`Resultado de álbuns de: ${result}`}</h2>
               {list.map((artist) => (
                 <Link
@@ -75,7 +75,7 @@ class Search extends React.Component {
                   </div>
                 </Link>
               ))}
-            </section>)
+            </div>)
           )}
       </div>
     );

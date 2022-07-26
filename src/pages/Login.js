@@ -25,7 +25,8 @@ class Login extends React.Component {
     }
   };
 
-  submitInfo = async () => {
+  submitInfo = async (event) => {
+    event.preventDefault();
     const { name } = this.state;
     this.setState({ loading: true });
     await createUser({ name });
@@ -36,21 +37,19 @@ class Login extends React.Component {
     const { button, loading, logado } = this.state;
     return (
       <div data-testid="page-login">
-        <form>
-          <input
-            type="text"
-            data-testid="login-name-input"
-            onChange={ this.onChange }
-          />
-          <button
-            type="submit"
-            data-testid="login-submit-button"
-            onClick={ this.submitInfo }
-            disabled={ button }
-          >
-            Entrar
-          </button>
-        </form>
+        <input
+          type="text"
+          data-testid="login-name-input"
+          onChange={ this.onChange }
+        />
+        <button
+          type="submit"
+          data-testid="login-submit-button"
+          onClick={ this.submitInfo }
+          disabled={ button }
+        >
+          Entrar
+        </button>
         {loading ? <Loading /> : null}
         {logado ? <Redirect to="/search" /> : null}
       </div>

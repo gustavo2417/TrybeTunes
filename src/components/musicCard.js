@@ -39,6 +39,7 @@ class MusicCard extends React.Component {
     if (favorites.some((songs) => songs.trackId === song.trackId)) {
       this.setState({ favorite: true });
     }
+    await getFavoriteSongs();
   }
 
   render() {
@@ -46,25 +47,27 @@ class MusicCard extends React.Component {
     const { trackName, previewUrl, song } = this.props;
     return (
       <div>
-        <h5>{trackName}</h5>
-        <audio data-testid="audio-component" src={ previewUrl } controls>
-          <track kind="captions" />
-          O seu navegador não suporta o elemento
-          {' '}
-          <code>audio</code>
-        </audio>
         {loaded ? <Loading /> : ((
-          <label htmlFor="checkbox-input">
-            Favorita
-            <input
-              data-testid={ `checkbox-music-${song.trackId}` }
-              type="checkbox"
-              name="checkbox-input"
-              checked={ favorite }
-              onChange={ this.favoriteMusic }
-            />
-          </label>
-        )) }
+          <section>
+            <h5>{trackName}</h5>
+            <audio data-testid="audio-component" src={ previewUrl } controls>
+              <track kind="captions" />
+              O seu navegador não suporta o elemento
+              {' '}
+              <code>audio</code>
+            </audio>
+
+            <label htmlFor="checkbox-input">
+              Favorita
+              <input
+                data-testid={ `checkbox-music-${song.trackId}` }
+                type="checkbox"
+                id="checkbox-input"
+                checked={ favorite }
+                onChange={ this.favoriteMusic }
+              />
+            </label>
+          </section>)) }
       </div>
     );
   }

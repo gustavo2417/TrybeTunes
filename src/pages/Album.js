@@ -12,18 +12,11 @@ class Album extends React.Component {
       Musics: [],
       info: '',
       loading: false,
-      // favoritesMusics: [],
     };
   }
 
   componentDidMount() {
     this.showSong();
-  }
-
-  showFavorites = async () => {
-    this.setState({ loading: true });
-    // const favorites = await getFavoriteSongs();
-    this.setState({ loading: false });
   }
 
   showSong = async () => {

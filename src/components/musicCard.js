@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { addSong, removeSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from '../pages/Loading';
+import '../styles/musicCard.css';
 
 class MusicCard extends React.Component {
   constructor() {
@@ -46,7 +47,7 @@ class MusicCard extends React.Component {
     const { loaded, favorite } = this.state;
     const { trackName, previewUrl, song } = this.props;
     return (
-      <div>
+      <div className="musics-card">
         {loaded ? <Loading /> : ((
           <section>
             <h5>{trackName}</h5>
